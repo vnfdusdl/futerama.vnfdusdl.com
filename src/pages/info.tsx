@@ -1,12 +1,13 @@
 import type { NextPage } from 'next';
 import { Info } from '../types/info';
 import { useFuteramaData } from '../../hooks/useFuteramaData';
+import {Error, Loading } from '../components';
 
 const InfoPage : NextPage = (page) => {
     const { data, error } = useFuteramaData('info');
 
-    if(error) return <div>Failed to Loading...</div>
-    if(!data) return <div>Loading...</div>
+    if(error) return <Error />
+    if(!data) return <Loading />
 
     return (
         <div>
