@@ -15,9 +15,8 @@ const InfoPage : NextPage = (page) => {
             <main>
                 {data.map((InfoData : Info) => {
                     const {id, synopsis, yearsAired, creators} = InfoData;
-                    console.log(InfoData);
                     return (
-                        <div key={`port-wine-list-${id}`}>
+                        <div key={`info-list-${id}`}>
                             <h2>{synopsis}</h2>
                             <p>{yearsAired}</p>
                             <p>{creators[0].name}</p>
