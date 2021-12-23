@@ -15,7 +15,6 @@ const CastPage: NextPage = (page) => {
             <main>
                 {data.map((CastData: Cast) => {
                     const { name, born, bio, id } = CastData;
-                    console.log(CharacterData);
                     return (
                         <div key={`cast-list-${id}`}>
                             <article>
