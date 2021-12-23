@@ -15,7 +15,6 @@ const CharactersPage : NextPage = (page) => {
         <main>
             {data.map((CharacterData : Characters) => {
                 const { name, images, gender, species, homePlanet, occupation,age, id, sayings} = CharacterData;
-                console.log(CharacterData);
                 return (
                     <div key={`character-list-${id}`}>
                         <article>
