@@ -18,7 +18,7 @@ const CharactersPage : NextPage = (page) => {
                 return (
                     <div key={`character-list-${id}`}>
                         <article>
-                        <img src="{images.main}" alt="" />
+                        <img src={images.main} alt="" />
                         <h2>{name.first} {name.middle} {name.last}</h2>
                         <p>gender : {gender}</p>
                         <p>age : {age}</p>
