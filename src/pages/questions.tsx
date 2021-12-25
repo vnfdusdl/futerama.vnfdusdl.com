@@ -1,8 +1,41 @@
 import type { NextPage } from 'next';
+// import { Questions } from '../types/questions';
+import { useFuteramaData } from '../../hooks/useFuteramaData';
+import { Error, Loading } from '../components';
+import { Question } from '../types/questions';
 
-const QuestionsPage : NextPage = (page) => {
+const QuestionsPage: NextPage = (page) => {
+    const { data, error } = useFuteramaData('questions');
+
+    if (error) return <Error />;
+    if (!data) return <Loading />;
+
     return (
-        <h1>Questions</h1>
-    )
-}
+        <div>
+            <h1>Questions</h1>
+            <main>
+                {data.map((QuestionsData: Question) => {
+                    const { id, question, possibleAnswers, correctAnswer } =
+                        QuestionsData;
+                    return (
+                        <div key={`question-list-${id}`}>
+                        <main>
+                            <h2>{question}</h2>
+                            {possibleAnswers.map((possibleAnswer : string) => {
+                                return (
+                                    <div>
+                                    <input id="answer" type="radio" name="possibleAnswers" />
+                                    <label htmlFor="answer" >{possibleAnswer}</label>
+                                    </div>
+                                )
+                            })}
+                        </main>
+                        </div>
+                    );
+                })}
+            </main>
+        </div>
+    );
+};
+
 export default QuestionsPage;
