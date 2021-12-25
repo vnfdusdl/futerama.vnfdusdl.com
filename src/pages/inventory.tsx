@@ -11,7 +11,7 @@ const InventoryPage: NextPage = (page) => {
 
     return (
         <div>
-            <h1>Cast</h1>
+            <h1>Inventory</h1>
             <main>
                 {data.map((InventoryData: InventoryData) => {
                     const { title, category, description, slogan, price, stock, id } = InventoryData;
