@@ -25,10 +25,15 @@ const CharactersPage : NextPage = (page) => {
                         <p>species : {species}</p>
                         <p>occupation : {occupation}</p>
                         <ul>sayings
-                            <li>{sayings[0]}</li>
-                            <li>{sayings[1]}</li>
-                            <li>{sayings[2]}</li>
-                        </ul>
+                            {CharacterData.sayings.map((saying: string) => {
+                                return ( 
+                                    <li key={`character-saying-${id}`}>{saying}</li>
+                                )
+                            })
+                            // {/* <li>{sayings[0]}</li>
+                            // <li>{sayings[1]}</li>
+                            // <li>{sayings[2]}</li> */}
+                            }</ul>
                         </article>
                     </div>
                 )
