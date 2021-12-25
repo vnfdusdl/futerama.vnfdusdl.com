@@ -1,8 +1,9 @@
+import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import { Info } from '../types/info';
 import { useFuteramaData } from '../../hooks/useFuteramaData';
 import {Error, Loading } from '../components';
-
+import { Navigation } from '../components/layouts';
 const InfoPage : NextPage = (page) => {
     const { data, error } = useFuteramaData('info');
 
@@ -11,8 +12,8 @@ const InfoPage : NextPage = (page) => {
 
     return (
         <div>
-            <h1>Information</h1>
-            <main>
+            <IndexContainer>
+            <IndexTitle>Information</IndexTitle>
                 {data.map((InfoData : Info) => {
                     const {id, synopsis, yearsAired, creators} = InfoData;
                     return (
@@ -26,8 +27,27 @@ const InfoPage : NextPage = (page) => {
                         </div>
                     )
                 })}
-            </main>
+            </IndexContainer>
         </div>
     )
 }
+
+const IndexContainer = styled.div`
+    /* background-color: #A685E2; */
+    /* min-height: 100vh; */
+    text-align: center;
+    padding: 30px 50px;
+    /* background-color: #fff; */
+    font-size: 20px;
+    line-height: 180%;
+`
+
+
+const IndexTitle = styled.h2`
+    display: inline-block;
+    font-size: 2rem;
+    line-height : 180%;
+    margin: 20px 0 0;
+`
+
 export default InfoPage;
