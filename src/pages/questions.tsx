@@ -6,10 +6,10 @@ import { Question } from '../types/questions';
 
 const QuestionsPage: NextPage = (page) => {
     const { data, error } = useFuteramaData('questions');
-
+    
     if (error) return <Error />;
     if (!data) return <Loading />;
-
+    console.log(`data`);
     return (
         <div>
             <h1>Questions</h1>
@@ -21,11 +21,11 @@ const QuestionsPage: NextPage = (page) => {
                         <div key={`question-list-${id}`}>
                         <main>
                             <h2>{question}</h2>
-                            {possibleAnswers.map((possibleAnswer : string) => {
+                            {possibleAnswers.map((possibleAnswer : string, index: number) => {
                                 return (
                                     <div>
-                                    <input id="answer" type="radio" name="possibleAnswers" />
-                                    <label htmlFor="answer" >{possibleAnswer}</label>
+                                    <input id={`answer${id}-${index}`} type="radio" name={`answer${id}`} />
+                                    <label htmlFor={`answer${id}-${index}`} >{possibleAnswer}</label>
                                     </div>
                                 )
                             })}
