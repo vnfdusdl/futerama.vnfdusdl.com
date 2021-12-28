@@ -23,7 +23,7 @@ const QuestionsPage: NextPage = (page) => {
                             <QuestionTitle>Q{id}. {question}</QuestionTitle>
                             {possibleAnswers.map((possibleAnswer : string, index: number) => {
                                 return (
-                                    <div>
+                                    <div key={`answer-list-${id}`}>
                                     <input id={`answer${id}-${index}`} type="radio" name={`answer${id}`} />
                                     <label htmlFor={`answer${id}-${index}`} >{possibleAnswer}</label>
                                     </div>
