@@ -26,9 +26,9 @@ const InfoPage : NextPage = (page) => {
                             <SynopsisTitle>줄거리</SynopsisTitle>
                             <Synopsis>{synopsis}</Synopsis>
                             <CreatorTitle>제작진</CreatorTitle>
-                            {creators.map((creator : Creator) => {
+                            {creators.map((creator : Creator, index: number) => {
                                 return (
-                                    <p> 
+                                    <p key={`{number}`}> 
                                         <span>{creator.name} </span>
                                         <span>{creator.url}</span>
                                     </p>

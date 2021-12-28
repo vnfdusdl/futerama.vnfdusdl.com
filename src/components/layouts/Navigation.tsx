@@ -16,7 +16,7 @@ export const Navigation = () => {
                     {ROUTES.map((routeObject: ROUTE) => {
                         console.log(routeObject);
                         return (
-                            <NavList>
+                            <NavList key={routeObject.ID}>
                                 <Link href={routeObject.PATH}>
                                     <a>{routeObject.LABEL}</a>
                                 </Link>
