@@ -15,5 +15,5 @@ export const Layout: React.FC = ({ children }) => {
 
 const App = styled.div`
     background-color: #fff;
-    margin: 0;
-`
+    `
+// const 

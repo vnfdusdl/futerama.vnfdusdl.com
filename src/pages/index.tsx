@@ -4,50 +4,69 @@ import { Info } from '../types/info';
 import { useFuteramaData } from '../../hooks/useFuteramaData';
 import {Error, Loading } from '../components';
 import { Navigation } from '../components/layouts';
+import { stringify } from 'querystring';
 const InfoPage : NextPage = (page) => {
     const { data, error } = useFuteramaData('info');
 
     if(error) return <Error />
     if(!data) return <Loading />
-
+    interface Creator {
+            name: string,
+            url: string
+        
+    }
     return (
-        <div>
             <IndexContainer>
-            <IndexTitle>Information</IndexTitle>
                 {data.map((InfoData : Info) => {
                     const {id, synopsis, yearsAired, creators} = InfoData;
                     return (
                         <div key={`info-list-${id}`}>
-                            <h2>{synopsis}</h2>
+                            <YearsAiredTitle>방영 기간</YearsAiredTitle> 
                             <p>{yearsAired}</p>
-                            <p>{creators[0].name}</p>
-                            <span>{creators[0].url}</span> 
-                            <p>{creators[1].name}</p>
-                            <span>{creators[1].url}</span> 
+                            <SynopsisTitle>줄거리</SynopsisTitle>
+                            <Synopsis>{synopsis}</Synopsis>
+                            <CreatorTitle>제작진</CreatorTitle>
+                            {creators.map((creator : Creator) => {
+                                return (
+                                    <p> 
+                                        <span>{creator.name} </span>
+                                        <span>{creator.url}</span>
+                                    </p>
+                                )
+                            })}
                         </div>
                     )
                 })}
             </IndexContainer>
-        </div>
     )
 }
 
 const IndexContainer = styled.div`
     /* background-color: #A685E2; */
-    /* min-height: 100vh; */
+    background-color: #BFA2DB;
+    min-height: 100vh;
     text-align: center;
-    padding: 30px 50px;
-    /* background-color: #fff; */
-    font-size: 20px;
+    margin-top: 20px;
     line-height: 180%;
+    padding: 150px 20px 0;
+`
+const YearsAiredTitle = styled.h2`
+    font-size: 1.6rem;
 `
 
-
-const IndexTitle = styled.h2`
-    display: inline-block;
-    font-size: 2rem;
+const SynopsisTitle = styled.h2`
+    display: block;
+    font-size: 1.6rem;
     line-height : 180%;
     margin: 20px 0 0;
+    text-align: center;
 `
 
+const Synopsis = styled.p`
+    text-align: center;
+    font-size: 1rem;
+`
+const CreatorTitle = styled.h2`
+    font-size: 1.6rem;
+`
 export default InfoPage;

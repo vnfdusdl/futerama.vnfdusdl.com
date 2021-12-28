@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import { useFuteramaData } from '../../hooks/useFuteramaData';
 import { Error, Loading } from '../components';
 import { Question } from '../types/questions';
+import styled from '@emotion/styled';
+
 
 const QuestionsPage: NextPage = (page) => {
     const { data, error } = useFuteramaData('questions');
@@ -11,16 +13,14 @@ const QuestionsPage: NextPage = (page) => {
     if (!data) return <Loading />;
     console.log(`data`);
     return (
-        <div>
-            <h1>Questions</h1>
-            <main>
+            <QuestionContainer>
                 {data.map((QuestionsData: Question) => {
                     const { id, question, possibleAnswers, correctAnswer } =
                         QuestionsData;
                     return (
                         <div key={`question-list-${id}`}>
-                        <main>
-                            <h2>{question}</h2>
+                        <QusetionCard>
+                            <QuestionTitle>Q{id}. {question}</QuestionTitle>
                             {possibleAnswers.map((possibleAnswer : string, index: number) => {
                                 return (
                                     <div>
@@ -29,13 +29,31 @@ const QuestionsPage: NextPage = (page) => {
                                     </div>
                                 )
                             })}
-                        </main>
+                        </QusetionCard>
                         </div>
                     );
                 })}
-            </main>
-        </div>
+            </QuestionContainer>
     );
 };
+
+const QuestionContainer = styled.main`
+    display: grid;
+    grid-template-columns: repeat(1fr, 1);
+    padding-top: 170px;
+    background-color: #BFA2DB;
+
+`
+const QusetionCard = styled.article`
+    padding: 0px 20px 15px;
+    border: 3px solid #6155a6;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 15px; 
+`
+
+const QuestionTitle = styled.h2`
+    font-size: 1.2rem;
+`
 
 export default QuestionsPage;
