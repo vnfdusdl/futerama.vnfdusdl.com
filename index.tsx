@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import type { NextPage } from 'next';
-import { Info } from '../types/info';
-import { useFuteramaData } from '../../hooks/useFuteramaData';
-import {Error, Loading } from '../components';
-import { Navigation } from '../components/layouts';
+import { Info } from './src/types/info';
+import { useFuteramaData } from './hooks/useFuteramaData';
+import {Error, Loading } from './src/components';
+import { Navigation } from './src/components/layouts';
 import { stringify } from 'querystring';
 const InfoPage : NextPage = (page) => {
     const { data, error } = useFuteramaData('info');
