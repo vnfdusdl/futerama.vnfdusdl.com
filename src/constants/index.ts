@@ -3,7 +3,7 @@ export const FUTERAMA_API_ENDPOINT = 'https://api.sampleapis.com/futurama/';
 export const ROUTES = [
     {
     ID : 0,
-    PATH: '',
+    PATH: '/info',
     LABEL: 'Information'
     },
     {
